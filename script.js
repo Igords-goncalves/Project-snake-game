@@ -48,6 +48,12 @@ function start() {
     if (snake[0].y > 15 * box && direction == 'down') snake[0].y = 0;
     if (snake[0].y < 0  && direction == 'up') snake[0].y = 16 * box;
     
+    for (let index = 1; index < snake.length; index++) {
+        if (snake[0].x === snake[index].x && snake[0].y === snake[index].y) {
+            clearInterval(game);
+            alert('Game Over')
+        }
+    }
 
     criarBg();
     criarSnake();
