@@ -40,14 +40,14 @@ document.addEventListener('keydown', update);
 
 // se o número do código for tal e a diração for diferente de tal a snake vai para tal direção
 function update(event) {
-    if (event.keyCode == 37 && direction != 'right') direction = 'left';
+    if (event.keyCode == 37 && direction != 'right') direction = 'left'; //Codigo da tecla
     if (event.keyCode == 38 && direction != 'down') direction = 'up';
     if (event.keyCode == 39 && direction != 'left') direction = 'right';
     if (event.keyCode == 40 && direction != 'up') direction = 'down';
 }
 
 function start() {
-    // se a cabeça da snake na posição x for maior que 15 e a direção for para direita ela vai receber o valor de 0 e vai aparecer do lado de 0 
+    // se a cabeça da snake na posição x for maior que 12 e a direção for para direita ela vai receber o valor de 0 e vai aparecer do lado de 0 
      // se a snake ultrapassar 15 e 0 de ponto negativo ela sumiria da tela
      //Pense no canavas como plano cartesiano onde a parede esquerda representa x 
      //e a parede direita representa y
