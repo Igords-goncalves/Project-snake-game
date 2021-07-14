@@ -5,23 +5,22 @@ let snake = []; // criar cobrinha como lista, já que ela vai ser uma série de 
 
 // tamanho da snake
 snake[0] = {
-    x: 8 * box,
-    y: 8 * box
+    x: 4 * box,
+    y: 4 * box
 }
 
 let direction = 'right'; // direção da snake
 let food = {
-
      // Math.floor retira a parte flutuante do Math.random
     // Math.random retorna um número aleatório até 1
     // vai gerar números aleatórios tirando a vírgula até o que setamos
-    x: Math.floor(Math.random() * 15 + 1) * box,
-    y: Math.floor(Math.random() * 15 + 1) * box
+    x: Math.floor(Math.random() * 11 + 1) * box,
+    y: Math.floor(Math.random() * 11 + 1) * box
 }
 
 function criarBg() {
     context.fillStyle = '#0e0112'; //Estilo do canvas
-    context.fillRect(0, 0, 16 * box, 16 * box); //Desenha o retângulo x, y, altura e largura
+    context.fillRect(0, 0, 12 * box, 12 * box); //Desenha o retângulo x, y, altura e largura
 }
 
 function criarSnake() {
@@ -49,11 +48,16 @@ function update(event) {
 
 function start() {
     // se a cabeça da snake na posição x for maior que 15 e a direção for para direita ela vai receber o valor de 0 e vai aparecer do lado de 0 
-    if (snake[0].x > 15 * box && direction == 'right') snake[0].x = 0;
-    if (snake[0].x < 0 && direction == 'left') snake[0].x = 16 * box;
      // se a snake ultrapassar 15 e 0 de ponto negativo ela sumiria da tela
-    if (snake[0].y > 15 * box && direction == 'down') snake[0].y = 0;
-    if (snake[0].y < 0  && direction == 'up') snake[0].y = 16 * box;
+     //Pense no canavas como plano cartesiano onde a parede esquerda representa x 
+     //e a parede direita representa y
+     //x p/ esquerda é < 0
+     //y p/ baixo é < 0
+     //A Partir desse entendimento posso manipular os resultados em relação ao canavas
+    if (snake[0].x > 12 * box && direction == 'right') snake[0].x = 0;
+    if (snake[0].x < 0 && direction == 'left') snake[0].x = 12 * box;
+    if (snake[0].y > 12 * box && direction == 'down') snake[0].y = 0;
+    if (snake[0].y < 0  && direction == 'up') snake[0].y = 12 * box;
     
     // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
     for (index = 1; index < snake.length; index++) {
@@ -82,8 +86,8 @@ function start() {
     if (snakex != food.x || snakey != food.y){
         snake.pop(); // pop tira o último elemento da lista
     } else { // caso contrário ela vai continuar aumentando e gerar números aleatórios
-        food.x = Math.floor(Math.random() * 15 + 1) * box;
-        food.y = Math.floor(Math.random() * 15 + 1) * box;
+        food.x = Math.floor(Math.random() * 11 + 1) * box;
+        food.y = Math.floor(Math.random() * 11 + 1) * box;
     }
 
     snake.pop();
