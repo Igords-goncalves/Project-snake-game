@@ -1,15 +1,20 @@
-let canvas = window.document.querySelector('canvas#snake'); 
-let context = canvas.getContext('2d');
+let canvas = window.document.querySelector('canvas#snake'); // importando o canvas
+let context = canvas.getContext('2d'); // serve para criar o background
 let box = 32;
-let snake = [];
+let snake = []; // criar cobrinha como lista, já que ela vai ser uma série de coordenadas, que quando pintadas, criam os quadradinhos
 
+// tamanho da snake
 snake[0] = {
     x: 8 * box,
     y: 8 * box
 }
 
-let direction = 'right';
+let direction = 'right'; // direção da snake
 let food = {
+
+     // Math.floor retira a parte flutuante do Math.random
+    // Math.random retorna um número aleatório até 1
+    // vai gerar números aleatórios tirando a vírgula até o que setamos
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box
 }
@@ -20,9 +25,9 @@ function criarBg() {
 }
 
 function criarSnake() {
-    for (let index = 0; index < snake.length; index++) {
+    for (index = 0; index < snake.length; index++) { // se 0 for menor que o tamanho da snake vai aumentar o tamanho dela de 1 em 1
         context.fillStyle = '#D0001B'
-        context.fillRect(snake[index].x, snake[index].y, box, box);
+        context.fillRect(snake[index].x, snake[index].y, box, box);// tamanho da snake
     }
 }
 
@@ -31,8 +36,10 @@ function criarFood() {
     context.fillRect(food.x, food.y, box, box);
 }
 
+// quando um evento acontece, detecta e chama uma função
 document.addEventListener('keydown', update);
 
+// se o número do código for tal e a diração for diferente de tal a snake vai para tal direção
 function update(event) {
     if (event.keyCode == 37 && direction != 'right') direction = 'left';
     if (event.keyCode == 38 && direction != 'down') direction = 'up';
@@ -41,34 +48,40 @@ function update(event) {
 }
 
 function start() {
-
+    // se a cabeça da snake na posição x for maior que 15 e a direção for para direita ela vai receber o valor de 0 e vai aparecer do lado de 0 
     if (snake[0].x > 15 * box && direction == 'right') snake[0].x = 0;
     if (snake[0].x < 0 && direction == 'left') snake[0].x = 16 * box;
+     // se a snake ultrapassar 15 e 0 de ponto negativo ela sumiria da tela
     if (snake[0].y > 15 * box && direction == 'down') snake[0].y = 0;
     if (snake[0].y < 0  && direction == 'up') snake[0].y = 16 * box;
     
-    for (let index = 1; index < snake.length; index++) {
-        if (snake[0].x === snake[index].x && snake[0].y === snake[index].y) {
+    // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
+    for (index = 1; index < snake.length; index++) {
+        if (snake[0].x === snake[index].x && snake[0].y == snake[index].y) {
             clearInterval(game);
             alert('Game Over')
         }
     }
 
+    // chamando as funções
     criarBg();
     criarSnake();
     criarFood();
 
-    let snakex = snake[0].x;
-    let snakey = snake[0].y;
+    let snakex = snake[0].x; // array na posição 0, x
+    let snakey = snake[0].y; // array na posiçao 0, y
 
+    // se a snake tiver em tal posição vai adicionar um quadrado a ela ou diminuir
     if (direction == 'right') snakex += box;
     if (direction == 'left') snakex -= box;
     if (direction == 'up') snakey -= box;
     if (direction == 'down') snakey += box;
 
+
+    // caso a posição de snakeX seja diferente de food.x e a posição de snakeY for diferente de food.y
     if (snakex != food.x || snakey != food.y){
-        snake.pop();
-    } else {
+        snake.pop(); // pop tira o último elemento da lista
+    } else { // caso contrário ela vai continuar aumentando e gerar números aleatórios
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
     }
@@ -79,6 +92,6 @@ function start() {
         x: snakex,
         y: snakey
     }
-    snake.unshift(newHead);
+    snake.unshift(newHead); // método unshift adiciona como primeiro quadradinho da cobrinha
 }
 let game = setInterval(start, 100);
