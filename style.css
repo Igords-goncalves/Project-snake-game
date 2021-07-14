@@ -1,0 +1,28 @@
+body {
+    background: linear-gradient(to right, #0e0c1b73,#06020aea,#06020aea, #0b0b1367), url(img/background.jpg);
+    background-size: cover;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+h1 {
+    font-family: 'Signika', sans-serif;
+    font-weight: 700;
+    font-size: 35pt;
+    margin: 40px;
+}
+
+canvas#snake {
+    border-radius: 10px;
+    opacity: 75%;
+    border: double 10px white ;
+}
+footer {
+    font-family: 'Signika', sans-serif;
+    font-weight: 100;
+}
+.github {
+    margin-top: 20px;
+    width: 30px;
+}
+

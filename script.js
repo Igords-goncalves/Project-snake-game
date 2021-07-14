@@ -9,26 +9,25 @@ snake[0] = {
 }
 
 let direction = 'right';
-
 let food = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box
 }
 
 function criarBg() {
-    context.fillStyle = 'black'; //Estilo do canvas
+    context.fillStyle = '#0e0112'; //Estilo do canvas
     context.fillRect(0, 0, 16 * box, 16 * box); //Desenha o retângulo x, y, altura e largura
 }
 
 function criarSnake() {
     for (let index = 0; index < snake.length; index++) {
-        context.fillStyle = 'green'
+        context.fillStyle = '#D0001B'
         context.fillRect(snake[index].x, snake[index].y, box, box);
     }
 }
 
 function criarFood() {
-    context.fillStyle = 'red';
+    context.fillStyle = '#ADD8E6';
     context.fillRect(food.x, food.y, box, box);
 }
 
