@@ -90,7 +90,7 @@ function start() {
         food.y = Math.floor(Math.random() * 11 + 1) * box;
     }
 
-    snake.pop();
+    //snake.pop(); Aqui estava meu erro, o snake.pop tira o ultimo elemento ou seja a cobrinha nunca iria crescer
 
     let newHead = {
         x: snakex,
