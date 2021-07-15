@@ -1,7 +1,12 @@
+let nome = document.querySelector('input.nome');
+let pontos = document.querySelector('select.pontos');
+let level = document.querySelector('select.level');
+
 let canvas = window.document.querySelector('canvas#snake'); // importando o canvas
 let context = canvas.getContext('2d'); // serve para criar o background
 let box = 32;
 let snake = []; // criar cobrinha como lista, já que ela vai ser uma série de coordenadas, que quando pintadas, criam os quadradinhos
+
 
 // tamanho da snake
 snake[0] = {
@@ -25,7 +30,7 @@ function criarBg() {
 
 function criarSnake() {
     for (index = 0; index < snake.length; index++) { // se 0 for menor que o tamanho da snake vai aumentar o tamanho dela de 1 em 1
-        context.fillStyle = '#D0001B'
+        context.fillStyle = '#971cbd'
         context.fillRect(snake[index].x, snake[index].y, box, box);// tamanho da snake
     }
 }
@@ -61,11 +66,12 @@ function start() {
     
     // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
     for (index = 1; index < snake.length; index++) {
-        if (snake[0].x === snake[index].x && snake[0].y == snake[index].y) {
+        if (snake[0].x == snake[index].x && snake[0].y == snake[index].y) {
+            alert('Game Over');
             clearInterval(game);
-            alert('Game Over')
         }
     }
+    
 
     // chamando as funções
     criarBg();
@@ -98,4 +104,4 @@ function start() {
     }
     snake.unshift(newHead); // método unshift adiciona como primeiro quadradinho da cobrinha
 }
-let game = setInterval(start, 500);
+let game = setInterval(start, 200);

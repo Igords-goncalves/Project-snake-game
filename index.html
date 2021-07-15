@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,15 @@
     <header>
         <h1>SNAKE HUNTER </h1>
     </header>
+    <div class="dados">
+        NOME<input class="nome" type="text">
+        PONTOS<select class="pontos" type="text"></select>
+        LEVEL<select class="level" type="text">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        <input class="botao" type="Button" value="START" onclick="inciar()">
+    </div>
     <div class="canvas">
         <canvas id="snake" width="384" height="384" ></canvas>
     </div>
