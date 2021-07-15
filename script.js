@@ -54,10 +54,10 @@ function start() {
      //x p/ esquerda é < 0
      //y p/ baixo é < 0
      //A Partir desse entendimento posso manipular os resultados em relação ao canavas
-    if (snake[0].x >= 12 * box && direction == 'right') snake[0].x = 0;
-    if (snake[0].x <= 0 && direction == 'left') snake[0].x = 12 * box;
-    if (snake[0].y >= 12 * box && direction == 'down') snake[0].y = 0;
-    if (snake[0].y <= 0  && direction == 'up') snake[0].y = 12 * box;
+    if (snake[0].x >= 12 * box && direction == 'right') snake[0].x = 0; //direita do board 
+    if (snake[0].x < 0 && direction == 'left') snake[0].x = 11 * box; //Tem que ser menor ue 12
+    if (snake[0].y >= 12 * box && direction == 'down') snake[0].y = 0; //de baixo p/ cima do board
+    if (snake[0].y < 0  && direction == 'up') snake[0].y = 11 * box; // Tem que ser menor que 12
     
     // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
     for (index = 1; index < snake.length; index++) {
