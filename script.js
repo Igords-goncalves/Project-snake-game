@@ -5,17 +5,17 @@ let snake = []; // criar cobrinha como lista, já que ela vai ser uma série de 
 
 // tamanho da snake
 snake[0] = {
-    x: 4 * box,
-    y: 4 * box
+    x: 8 * box,
+    y: 8 * box
 }
 
 let direction = 'right'; // direção da snake
 let food = {
-     // Math.floor retira a parte flutuante do Math.random
-    // Math.random retorna um número aleatório até 1
-    // vai gerar números aleatórios tirando a vírgula até o que setamos
-    x: Math.floor(Math.random() * 11 + 1) * box,
-    y: Math.floor(Math.random() * 11 + 1) * box
+    //Math.floor retira a parte flutuante do Math.random
+    //Math.random retorna um número aleatório até 1
+    //vai gerar números aleatórios tirando a vírgula até o que setamos
+    x: Math.floor(Math.random() * 11) * box,
+    y: Math.floor(Math.random() * 11) * box
 }
 
 function criarBg() {
@@ -54,10 +54,10 @@ function start() {
      //x p/ esquerda é < 0
      //y p/ baixo é < 0
      //A Partir desse entendimento posso manipular os resultados em relação ao canavas
-    if (snake[0].x > 12 * box && direction == 'right') snake[0].x = 0;
-    if (snake[0].x < 0 && direction == 'left') snake[0].x = 12 * box;
-    if (snake[0].y > 12 * box && direction == 'down') snake[0].y = 0;
-    if (snake[0].y < 0  && direction == 'up') snake[0].y = 12 * box;
+    if (snake[0].x >= 12 * box && direction == 'right') snake[0].x = 0;
+    if (snake[0].x <= 0 && direction == 'left') snake[0].x = 12 * box;
+    if (snake[0].y >= 12 * box && direction == 'down') snake[0].y = 0;
+    if (snake[0].y <= 0  && direction == 'up') snake[0].y = 12 * box;
     
     // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
     for (index = 1; index < snake.length; index++) {
@@ -98,4 +98,4 @@ function start() {
     }
     snake.unshift(newHead); // método unshift adiciona como primeiro quadradinho da cobrinha
 }
-let game = setInterval(start, 100);
+let game = setInterval(start, 500);
