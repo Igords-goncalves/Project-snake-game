@@ -1,12 +1,11 @@
 let nome = document.querySelector('input.nome');
-let pontos = document.querySelector('select.pontos');
+let pontos = 0;
 let level = document.querySelector('select.level');
 
 let canvas = window.document.querySelector('canvas#snake'); // importando o canvas
 let context = canvas.getContext('2d'); // serve para criar o background
 let box = 32;
 let snake = []; // criar cobrinha como lista, já que ela vai ser uma série de coordenadas, que quando pintadas, criam os quadradinhos
-
 
 // tamanho da snake
 snake[0] = {
@@ -40,6 +39,10 @@ function criarFood() {
     context.fillRect(food.x, food.y, box, box);
 }
 
+function ganharPontos() {
+    document.querySelector('.pontos').value = pontos;
+}
+
 // quando um evento acontece, detecta e chama uma função
 document.addEventListener('keydown', update);
 
@@ -67,7 +70,7 @@ function start() {
     // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
     for (index = 1; index < snake.length; index++) {
         if (snake[0].x == snake[index].x && snake[0].y == snake[index].y) {
-            alert('Game Over');
+            alert('Game Over você ganhou ' + pontos);
             clearInterval(game);
         }
     }
@@ -94,6 +97,7 @@ function start() {
     } else { // caso contrário ela vai continuar aumentando e gerar números aleatórios
         food.x = Math.floor(Math.random() * 11 + 1) * box;
         food.y = Math.floor(Math.random() * 11 + 1) * box;
+        pontos++; 
     }
 
     //snake.pop(); Aqui estava meu erro, o snake.pop tira o ultimo elemento ou seja a cobrinha nunca iria crescer
@@ -104,4 +108,4 @@ function start() {
     }
     snake.unshift(newHead); // método unshift adiciona como primeiro quadradinho da cobrinha
 }
-let game = setInterval(start, 200);
+let game = setInterval(start, 200); //Ajuste de velocidade
