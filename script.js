@@ -1,6 +1,4 @@
-let name = '';
 let ponts = 0;
-let level = document.querySelector('select.level');
 
 let canvas = window.document.querySelector('canvas#snake'); // importando o canvas
 let context = canvas.getContext('2d'); // serve para criar o background
@@ -39,10 +37,6 @@ function criarFood() {
     context.fillRect(food.x, food.y, box, box);
 }
 
-function escreveNome() {
-    let name = document.querySelector('input.nome').value;
-    return name;
-}
 function ganharPontos() {
     document.querySelector('input.pontos').value = ponts;
 }
@@ -59,6 +53,8 @@ function update(event) {
 }
 
 function start() {
+
+    let name = document.querySelector('input.nome').value; //Tem que receber o valor
     // se a cabeça da snake na posição x for maior que 12 e a direção for para direita ela vai receber o valor de 0 e vai aparecer do lado de 0 
      // se a snake ultrapassar 15 e 0 de ponto negativo ela sumiria da tela
      //Pense no canavas como plano cartesiano onde a parede esquerda representa x 
@@ -74,7 +70,7 @@ function start() {
     // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
     for (index = 1; index < snake.length; index++) {
         if (snake[0].x == snake[index].x && snake[0].y == snake[index].y) {
-            alert('Game Over! ' + 'Pontuação Total: ' + ponts + ' pnts' + name);
+            alert('Game Over! ' + 'Pontuação Total: ' + ponts + ' pnts ' + name);
             clearInterval(game);
         }
     }
@@ -85,7 +81,6 @@ function start() {
     criarSnake();
     criarFood();
     ganharPontos();
-    escreveNome();
 
     let snakex = snake[0].x; // array na posição 0, x
     let snakey = snake[0].y; // array na posiçao 0, y
@@ -114,4 +109,9 @@ function start() {
     }
     snake.unshift(newHead); // método unshift adiciona como primeiro quadradinho da cobrinha
 }
-let game = setInterval(start, 200); //Ajuste de velocidade
+function level() {
+    let game = document.querySelector('select.level').value; //Ajuste de velocidade
+        if (game == '1') game = setInterval(start, 200);
+        if (game == '2') game = setInterval(start, 100);
+        if (game == '3') game = setInterval(start, 50);
+}
