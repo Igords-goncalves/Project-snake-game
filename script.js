@@ -1,5 +1,5 @@
-let nome = document.querySelector('input.nome');
-let pontos = 0;
+let name = '';
+let ponts = 0;
 let level = document.querySelector('select.level');
 
 let canvas = window.document.querySelector('canvas#snake'); // importando o canvas
@@ -39,8 +39,12 @@ function criarFood() {
     context.fillRect(food.x, food.y, box, box);
 }
 
+function escreveNome() {
+    let name = document.querySelector('input.nome').value;
+    return name;
+}
 function ganharPontos() {
-    document.querySelector('.pontos').value = pontos;
+    document.querySelector('input.pontos').value = ponts;
 }
 
 // quando um evento acontece, detecta e chama uma função
@@ -70,7 +74,7 @@ function start() {
     // se a cabeça se chocar com o corpo, o jogo vai acabar e vai dizer que é o fim do jogo
     for (index = 1; index < snake.length; index++) {
         if (snake[0].x == snake[index].x && snake[0].y == snake[index].y) {
-            alert('Game Over você ganhou ' + pontos);
+            alert('Game Over! ' + 'Pontuação Total: ' + ponts + ' pnts' + name);
             clearInterval(game);
         }
     }
@@ -80,6 +84,8 @@ function start() {
     criarBg();
     criarSnake();
     criarFood();
+    ganharPontos();
+    escreveNome();
 
     let snakex = snake[0].x; // array na posição 0, x
     let snakey = snake[0].y; // array na posiçao 0, y
@@ -97,7 +103,7 @@ function start() {
     } else { // caso contrário ela vai continuar aumentando e gerar números aleatórios
         food.x = Math.floor(Math.random() * 11 + 1) * box;
         food.y = Math.floor(Math.random() * 11 + 1) * box;
-        pontos++; 
+        ponts ++; //A cada elemento tirado da lista um ponto é contabilizado
     }
 
     //snake.pop(); Aqui estava meu erro, o snake.pop tira o ultimo elemento ou seja a cobrinha nunca iria crescer
