@@ -52,6 +52,7 @@ function update(event) {
     if (event.keyCode == 40 && direction != 'up') direction = 'down';
 }
 
+
 function start() {
 
     let name = document.querySelector('input.nome').value; //Tem que receber o valor
@@ -109,9 +110,16 @@ function start() {
     }
     snake.unshift(newHead); // método unshift adiciona como primeiro quadradinho da cobrinha
 }
-function level() {
+let = game = setInterval(start, 200);
+function levels() {
     let game = document.querySelector('select.level').value; //Ajuste de velocidade
-        if (game == '1') game = setInterval(start, 200);
-        if (game == '2') game = setInterval(start, 100);
-        if (game == '3') game = setInterval(start, 50);
+        if (game == '1') {
+            game = setInterval(start, 200);
+        } else if (game == '2') {
+            game = setInterval(start, 100);
+        } else if (game == '3') {
+            game = setInterval(start, 50);
+        } else {
+            clearInterval(game);
+        }
 }
