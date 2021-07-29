@@ -1,3 +1,9 @@
 fonts 
 
 https://fonts.google.com/specimen/VT323#standard-styles
+
+--- Problema encontrado
+
+Na linha de código 126 o código está capturando as entradas do select perfeitamente porém 
+ - ao selecionar o level mais de uma vez o valor é sobreescrito e além disso 
+ - fica selecionado automáticamente fazendo com que as setas up and down tenham a função de seleção. 

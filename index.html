@@ -16,10 +16,12 @@
     <div class="dados">
         NOME<input class="nome" type="text" placeholder="Digite ...">
         PONTOS<input class="pontos" type="text">
-        LEVEL<select class="level" type="number">
+
+        LEVEL<select class="level" type="text" onchange="levels()">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
+
         <input class="botao" type="Button" value="START" onclick="inciar()">
     </div>
     <div class="canvas">

@@ -112,33 +112,4 @@ function start() {
 }
 
 //Aterando a velocidade
-
-let game = document.querySelector('select.level').value
-//let game = setInterval(start, 200);
-
-if (game == '1') {
-    game = setInterval(start, 200);
-} else if (game == '2') {
-    game = setInterval(start, 100);
-}
-
-/*
-function levels() {
-    let game = document.querySelector('select.level').value; //Ajuste de velocidade
-        switch (game) {
-            case '1':
-                clearInterval(game)
-                game = setInterval(start, 200);
-                break;
-            case '2':
-                clearInterval(game)
-                game = setInterval(start, 130);
-                break;
-            case '3':
-                clearInterval(start) 
-                game = setInterval(start, 80)
-                break;
-            default:
-                break;
-        }
-}*/
+game = setInterval(start, 200);
